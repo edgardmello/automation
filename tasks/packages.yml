@@ -1,0 +1,35 @@
+- name: Install Ansible
+  apt:
+    name:
+      - htop
+      - mc
+      - tmux
+      - ncdu
+      - zsh
+      - vim-nox
+      - curl
+      - git
+      - ncdu
+      - neofetch
+      - nnn
+      - npm
+
+- name: add ansible user
+  user:
+    name: dartfog7
+    system: yes
+
+- name: set up sudo for ansible user
+  copy:
+    src: files/sudoer_dartfog7
+    dest: /etc/sudoers.d/dartfog7
+    owner: root
+    group: root
+    mode: 0440
+
+- name: add ansible-pull cron job
+  cron:
+    name: ansible auto-provision
+    user: dartfog7
+    minute: "*/10"
+    job: ansible-pull -o -U https://github.com/edgardmello/automation.git
