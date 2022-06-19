@@ -7,3 +7,14 @@
       apt:
         name:
           - htop
+          - mc
+          - tmux
+          - ncdu
+          - zsh
+          - vim-nox
+          - curl
+          - git
+          - ncdu
+          - neofetch
+          - nnn
+          - npm
